@@ -84,7 +84,7 @@ code { font-size: 13px; }
   // rebuilt from the checked fields only, so nothing else from the link reaches the intent syntax
   const query = ['v', 'pc', 'fp', 'port', 'h', 'c'].filter((k) => p.has(k)).map((k) => k + '=' + encodeURIComponent(p.get(k))).join('&');
   const android = /Android/i.test(navigator.userAgent);
-  const fallback = encodeURIComponent('https://mygood0408.github.io/phonebox/pair/');
+  const fallback = encodeURIComponent('https://mygood0408.github.io/phonebox-yc/pair/');
   document.getElementById('open').href = android
     ? `intent://pair?${query}#Intent;scheme=phonebox;package=net.oxog.phonebox.deskpanel;S.browser_fallback_url=${fallback};end`
     : `phonebox://pair?${query}`;
