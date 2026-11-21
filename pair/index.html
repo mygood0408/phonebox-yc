@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
-<title>Pair PhoneBox</title>
+<title>PhoneBox 페어링</title>
 <link rel="icon" href="../favicon.ico">
 <style>
 :root { --bg: #07090d; --panel: #10141b; --line: #232a35; --text: #eef2f6; --muted: #8a94a3; --accent: #2dd4bf; --warn: #f59e0b; color-scheme: dark; }
@@ -27,31 +27,29 @@ code { font-size: 13px; }
 </head>
 <body>
 <div class="wrap">
-  <header><img src="../favicon.ico" alt=""><h1>Pair PhoneBox</h1></header>
+  <header><img src="../favicon.ico" alt=""><h1>PhoneBox 페어링</h1></header>
 
   <div class="card" id="ok" hidden>
-    <h2>Pair this phone with a computer?</h2>
-    <p class="muted">“<span id="pc"></span>” at <span id="hosts"></span>. Check that the computer's pairing window shows the code
-      <b id="check"></b>, and continue only if you started pairing there.</p>
-    <a class="btn primary" id="open" href="#">Open in PhoneBox</a>
-    <p class="muted" id="plainWrap" hidden style="margin-top:10px">Did a store open instead? Some browsers send app links there;
-      <a id="plain" href="#" style="color:var(--accent)">open the pairing link directly</a>. If Android then asks which app to
-      open it with, choose PhoneBox: another app that accepts these links would get the pairing code.</p>
-    <p class="muted" style="margin-top:10px">The pairing code works once, for 5 minutes. If it expired, start pairing again on the computer.</p>
+    <h2>이 폰을 컴퓨터와 페어링할까요?</h2>
+    <p class="muted">컴퓨터 “<span id="pc"></span>” (주소 <span id="hosts"></span>). 컴퓨터 화면에 표시된 확인 코드가
+      <b id="check"></b>와 같은지 보세요. 컴퓨터에서 페어링을 직접 시작했을 때만 계속하세요.</p>
+    <a class="btn primary" id="open" href="#">PhoneBox에서 열기</a>
+    <p class="muted" id="plainWrap" hidden style="margin-top:10px">앱 대신 스토어가 열렸다면, 브라우저가 앱 링크를 스토어로 보낸 것입니다.
+      <a id="plain" href="#" style="color:var(--accent)">페어링 링크를 직접 열기</a>를 누르세요. Android가 어떤 앱으로 열지 물으면 <b>PhoneBox</b>를 고르세요. 다른 앱을 고르면 확인 코드가 그 앱에 전달될 수 있습니다.</p>
+    <p class="muted" style="margin-top:10px">페어링 코드는 한 번만 쓸 수 있고 5분 동안만 유효합니다. 만료되었다면 컴퓨터에서 페어링을 다시 시작하세요.</p>
   </div>
 
   <div class="card" id="bad" hidden>
-    <h2 class="warn">This pairing link is incomplete</h2>
-    <p class="muted">Scan the QR code again from PhoneBox on the computer: Settings › General › Wi-Fi &amp; Tailscale › Pair a phone over Wi-Fi.</p>
+    <h2 class="warn">페어링 링크가 불완전합니다</h2>
+    <p class="muted">컴퓨터의 PhoneBox 설정 화면에서 QR 코드를 다시 찍으세요. 메뉴 경로: 설정 › 일반 › Wi-Fi &amp; Tailscale › Wi-Fi로 휴대폰 페어링.</p>
   </div>
 
   <div class="card">
-    <h2>No PhoneBox app yet?</h2>
-    <p class="muted">Install the app on the phone first (Android 5.0 or later), then scan the QR code again.</p>
+    <h2>PhoneBox 앱이 아직 없나요?</h2>
+    <p class="muted">먼저 폰에 PhoneBox 앱을 설치하세요(Android 5.0 이상). 설치한 뒤 QR 코드를 다시 찍으세요.</p>
   </div>
 
-  <p class="muted">This page runs only in your browser. The pairing details are in the part of the link after <code>#</code>,
-    which browsers never send to a server, and the page removes them from your history.
+  <p class="muted">이 페이지는 브라우저 안에서만 동작합니다. 페어링 정보는 링크의 <code>#</code> 뒷부분에 있고, 브라우저는 이 부분을 서버로 보내지 않습니다. 이 페이지는 기록에서도 이 정보를 지웁니다.
   </p>
 </div>
 <script>
@@ -74,7 +72,7 @@ code { font-size: 13px; }
   if (!ok) { document.getElementById('bad').hidden = false; return; }
   p.set('h', hosts.join(','));
   p.set('port', String(port));
-  document.getElementById('pc').textContent = (p.get('pc') || 'your computer').slice(0, 64);
+  document.getElementById('pc').textContent = (p.get('pc') || '컴퓨터').slice(0, 64);
   document.getElementById('hosts').textContent = hosts.join(', ') + ' (port ' + port + ')';
   document.getElementById('check').textContent = (p.get('fp').slice(0, 4) + ' ' + p.get('fp').slice(4, 8)).toUpperCase();
   // Chrome on Android opens intent:// links in the app and falls back to the download page when it is not installed;
@@ -95,3 +93,4 @@ code { font-size: 13px; }
 </script>
 </body>
 </html>
+
